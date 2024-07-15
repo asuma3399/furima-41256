@@ -11,14 +11,13 @@
 | first_name_ruby    | string     | null: false |
 | email              | string     | null: false, unique: true |
 | encrypted_password | string     | null: false |
-| birth_date         | datetime   | null: false |
+| birth_date         | date       | null: false |
 
 ### Association
 
 - has_many :items
 - has_many :comments
-- has_many :purchase records
-- has_many :shipping_addresses
+- has_many :purchase_records
 
 ## items テーブル
 
@@ -38,7 +37,7 @@
 
 - belongs_to :user
 - has_many :comments
-- has_one : purchase record
+- has_one : purchase_record
 
 ## comments テーブル
 
@@ -77,7 +76,6 @@
 | building_name      | string     |             |
 | telephone_number   | string     | null: false |
 | purchase_record    | references | null: false, foreign_key: true |
-| user               | references | null: false, foreign_key: true |
 
 ### Association
 
