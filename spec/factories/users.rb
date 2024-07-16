@@ -6,7 +6,7 @@ FactoryBot.define do
     last_name_ruby        { Gimei.name.last.katakana }
     first_name_ruby       { Gimei.name.first.katakana }
     email                 { Faker::Internet.email }
-    password              { Faker::Internet.password(min_length: 6) }
+    password              { Faker::Internet.password(min_length: 6) + '1a' }
     password_confirmation { password }
     birth_date            { Faker::Date.birthday(min_age: 20, max_age: 65) }
   end
