@@ -11,7 +11,7 @@ class Item < ApplicationRecord
   validates :product_name, presence: true
   validates :product_description, presence: true
   validates :category_id, numericality: { other_than: 1 }
-  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, allow_blank: true }
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, allow_blank: true }, only_integer:true
   validates :product_condition_id, numericality: { other_than: 1 }
   validates :burden_of_shipping_charges_id, numericality: { other_than: 1 }
   validates :delivery_region_id, numericality: { other_than: 1 }
