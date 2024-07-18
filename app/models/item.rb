@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   belongs_to :delivery_region
   belongs_to :estimated_delivery_date
   belongs_to_active_hash :burden_of_shipping_charges
+  belongs_to_active_hash :estimated_delivery_date
   has_one_attached :image
 
   validates :image, presence: true
