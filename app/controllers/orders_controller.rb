@@ -1,9 +1,10 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_item
 
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
-    @item = Item.find(params[:item_id])
+    set_item
     @purchase_record_shipping_address = PurchaseRecordShippingAddress.new
     if current_user == @item.user || @item.purchase_record.present?
       redirect_to root_path
@@ -11,7 +12,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @item = Item.find(params[:item_id])
+    set_item
     @purchase_record_shipping_address = PurchaseRecordShippingAddress.new(purchase_record_params)
     if @purchase_record_shipping_address.valid?
       pay_item
@@ -27,6 +28,10 @@ class OrdersController < ApplicationController
 
   def purchase_record_params
     params.require(:purchase_record_shipping_address).permit(:post_code, :delivery_region_id, :municipality, :street_address, :building_name, :telephone_number).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 
   def pay_item
