@@ -51,7 +51,7 @@ class ItemsController < ApplicationController
   end
 
   def correct_user
-    if current_user.id == @item.user_id && @item.purchase_record.present?
+    if @item.purchase_record.present? || current_user.id != @item.user_id
       redirect_to root_path
     end
   end
