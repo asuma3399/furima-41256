@@ -8,14 +8,19 @@
     </h2>
 
     <div class="item-img-content">
-      <% @item.images.each do |image| %>
-        <%= image_tag image, class: "item-box-img" %>
-      <% end %>
-      <% if @item.purchase_record.present? %>
-        <div class="sold-out">
-          <span>Sold Out!!</span>
+        <%= image_tag @item.images[0], class:"item-box-img" %>
+        <div class="other-images">
+          <% @item.images[1..-1].each do |image| %>
+            <div class="other-image">
+              <%= image_tag image %>
+            </div>
+          <%end%>
         </div>
-      <% end %>
+        <% if @item.purchase_record.present? %>
+          <div class="sold-out">
+            <span>Sold Out!!</span>
+          </div>
+        <% end %>
     </div>
     <div class="item-price-box">
       <span class="item-price">

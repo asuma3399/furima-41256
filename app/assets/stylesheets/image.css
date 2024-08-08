@@ -1,0 +1,40 @@
+img {
+  height: 100px;
+  width: 100px;
+  /* 縦横比を保ったまま、画像を縦横100pxのサイズに収めるプロパティです */
+  object-fit: contain;
+}
+
+.other-images {
+  display: flex;
+}
+
+.other-image {
+  margin-right: 10px;
+}
+
+.image-delete-button {
+  text-align: center;
+  border: solid 1px;
+  cursor: pointer;
+}
+
+.main-image {
+  height: 200px;
+  width: 200px;
+}
+
+#previews {
+  display: flex;
+}
+
+.preview{
+  margin-right: 30px;
+}
+
+.image-delete-button {
+  text-align: center;
+  border: solid 1px;
+  cursor: pointer;
+  margin-bottom: 5px;
+}

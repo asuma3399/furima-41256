@@ -48,8 +48,13 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:content, :image, :product_name, :category_id, :price, :product_condition_id,
-                                 :burden_of_shipping_charges_id, :delivery_region_id, :estimated_delivery_date_id, :product_description).merge(user_id: current_user.id)
+    item_params = params.require(:item).permit(:content, :product_name, :category_id, :price, :product_condition_id,
+                                               :burden_of_shipping_charges_id, :delivery_region_id, :estimated_delivery_date_id, :product_description, images: [])
+    # post[:images]の画像データを追加する
+    if params[:post] && params[:post][:images]
+      item_params[:images] = params[:post][:images]
+    end
+    item_params.merge(user_id: current_user.id)
   end
 
   def correct_user
