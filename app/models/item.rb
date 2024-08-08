@@ -1,14 +1,17 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :user
   belongs_to :category
   belongs_to :product_condition
   belongs_to :delivery_region
   belongs_to_active_hash :burden_of_shipping_charges
   belongs_to_active_hash :estimated_delivery_date
-  has_one_attached :image
+  has_one :purchase_record
+  has_many :comments
+  has_many_attached :images
 
   with_options presence: true do
-    validates :image
+    validates :images, length: { minimum: 1, maximum: 5, message: "は1枚以上5枚以下にしてください" }
     validates :product_name
     validates :product_description
     validates :category_id, numericality: { other_than: 1 }
@@ -18,7 +21,4 @@ class Item < ApplicationRecord
     validates :delivery_region_id, numericality: { other_than: 1 }
     validates :estimated_delivery_date_id, numericality: { other_than: 1 }
   end
-
-  belongs_to :user
-  has_one :purchase_record
 end
