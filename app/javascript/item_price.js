@@ -9,6 +9,8 @@ const pay = () => {
     let profitValue = inputValue - taxValue;
     profitValue = Math.floor(profitValue);  
     profitNumber.innerHTML = profitValue;
+
+    console.log(`Fetching /items/${itemId}.js`);
   })
 };
 

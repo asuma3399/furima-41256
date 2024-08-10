@@ -16,6 +16,7 @@
             </div>
           <%end%>
         </div>
+        
         <% if @item.purchase_record.present? %>
           <div class="sold-out">
             <span>Sold Out!!</span>
@@ -44,6 +45,7 @@
     <div class="item-explain-box">
       <span><%= @item.product_description %></span>
     </div>
+
     <table class="detail-table">
       <tbody>
         <tr>
@@ -69,6 +71,10 @@
         <tr>
           <th class="detail-item">発送日の目安</th>
           <td class="detail-value"><%= @item.estimated_delivery_date.name %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">タグ</th>
+          <td class="detail-value"><%= @item.tags.first&.tag_name %></td>
         </tr>
       </tbody>
     </table>
